@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* NOIR ATELIER - Luxury Fashion Brand Palette */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+    --primary: 0 0% 8%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 30 10% 96%;
+    --secondary-foreground: 0 0% 8%;
+    --muted: 30 10% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 30 20% 92%;
+    --accent-foreground: 0 0% 8%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 8%;
+    --radius: 0.25rem;
+    
+    /* Custom Brand Colors */
+    --noir-black: #141414;
+    --noir-white: #FFFFFF;
+    --noir-cream: #F5F3EF;
+    --noir-beige: #E8E4DC;
+    --noir-gray: #8A8A8A;
+    --noir-light-gray: #F8F8F8;
+    --noir-border: #E5E5E5;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--noir-light-gray);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--noir-gray);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--noir-black);
+  }
+}
+
+@layer components {
+  /* Typography Utilities */
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  /* Luxury Button Styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-[var(--noir-black)] text-white text-sm font-medium tracking-wider uppercase transition-all duration-300;
+  }
+  
+  .btn-primary:hover {
+    @apply bg-[var(--noir-gray)];
+  }
+  
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 border border-[var(--noir-black)] text-[var(--noir-black)] text-sm font-medium tracking-wider uppercase bg-transparent transition-all duration-300;
+  }
+  
+  .btn-outline:hover {
+    @apply bg-[var(--noir-black)] text-white;
+  }
+  
+  /* Section Spacing */
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-32;
+  }
+  
+  .section-y {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  /* Image Hover Effect */
+  .img-hover-zoom {
+    @apply overflow-hidden;
+  }
+  
+  .img-hover-zoom img {
+    @apply transition-transform duration-700 ease-out;
+  }
+  
+  .img-hover-zoom:hover img {
+    @apply scale-105;
+  }
+  
+  /* Text Link Underline Animation */
+  .link-underline {
+    @apply relative;
+  }
+  
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300;
+  }
+  
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+  
+  /* Cart Drawer Animation */
+  .cart-drawer-enter {
+    transform: translateX(100%);
+  }
+  
+  .cart-drawer-enter-active {
+    transform: translateX(0);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .cart-drawer-exit {
+    transform: translateX(0);
+  }
+  
+  .cart-drawer-exit-active {
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  /* Product Card */
+  .product-card {
+    @apply cursor-pointer;
+  }
+  
+  .product-card .product-image {
+    @apply relative overflow-hidden bg-[var(--noir-light-gray)];
+  }
+  
+  .product-card .product-image img {
+    @apply w-full h-full object-cover transition-transform duration-700;
+  }
+  
+  .product-card:hover .product-image img {
+    @apply scale-105;
+  }
+  
+  .product-card .quick-add {
+    @apply absolute bottom-0 left-0 right-0 translate-y-full transition-transform duration-300;
+  }
+  
+  .product-card:hover .quick-add {
+    @apply translate-y-0;
+  }
+  
+  /* Form Inputs */
+  .input-luxury {
+    @apply w-full px-0 py-3 bg-transparent border-0 border-b border-[var(--noir-border)] text-[var(--noir-black)] placeholder:text-[var(--noir-gray)] focus:outline-none focus:border-[var(--noir-black)] transition-colors duration-300;
+  }
+  
+  /* Loading Skeleton */
+  .skeleton {
+    @apply animate-pulse bg-[var(--noir-light-gray)];
+  }
+  
+  /* Fade In Animation Classes */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  /* Page Transition */
+  .page-transition-enter {
+    opacity: 0;
+  }
+  
+  .page-transition-enter-active {
+    opacity: 1;
+    transition: opacity 0.4s ease-out;
+  }
+  
+  .page-transition-exit {
+    opacity: 1;
+  }
+  
+  .page-transition-exit-active {
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+  }
+}
+
+@layer utilities {
+  /* Aspect Ratios */
+  .aspect-fashion {
+    aspect-ratio: 3/4;
+  }
+  
+  .aspect-hero {
+    aspect-ratio: 16/9;
+  }
+  
+  .aspect-square {
+    aspect-ratio: 1/1;
+  }
+  
+  /* Letter Spacing */
+  .tracking-luxury {
+    letter-spacing: 0.2em;
+  }
+  
+  /* Line Clamp */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
